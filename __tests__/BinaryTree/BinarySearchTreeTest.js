@@ -14,6 +14,5 @@ describe('BST Test', () => {
         const levelOrderTraversal = bst.levelOrderTraversal();
 
         expect(levelOrderTraversal).toEqual([30, 20, 45, 10, 60]);
-        //console.log(levelOrderTraversal);
     });
 });

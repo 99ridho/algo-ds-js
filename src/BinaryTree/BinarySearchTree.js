@@ -19,6 +19,19 @@ class Node {
 
 /**
  * This class is used to represent entire BST with their attributes.
+ * 
+ * BST Explanation:
+ * Binary Search Tree is a data structure which every node can have maximum 2 child nodes.
+ * 
+ * Example:
+ * 
+ *                          60
+ *                         /  \
+ *                       50    75
+ *                      /  \     \
+ *                     30   55    89
+ *                               /
+ *                             80
  */
 export default class BinarySearchTree {
 
@@ -33,8 +46,8 @@ export default class BinarySearchTree {
 
   /**
    * adding specified data to binary search tree
-   * @param {number} id 
-   * @param {any} data 
+   * @param {number} id
+   * @param {any} data
    */
   add(id: number, data: any) {
     const newNode = new Node(id, data);
@@ -49,26 +62,34 @@ export default class BinarySearchTree {
   /**
    * adding specified data to binary search tree.
    * Must conform the BST's insertion method.
-   * 
+   *
    * If new node value is less than subroot's value, then go left recursively
    * If new node value is greater than subroot's value, then go right recursively
-   * 
-   * @param {number} id 
-   * @param {any} data 
+   *
+   * @param {number} id
+   * @param {any} data
    */
   addNodeRecursively(subroot: Node, newNode: Node) {
     if (newNode.id < subroot.id) {
-      if (subroot.left == null) subroot.left = newNode; // eslint-disable-line no-param-reassign
-      else this.addNodeRecursively(subroot.left, newNode);
+      if (subroot.left === null) {
+        subroot.left = newNode; // eslint-disable-line no-param-reassign
+      } else {
+        // $FlowFixMe
+        this.addNodeRecursively(subroot.left, newNode);
+      }
     } else if (newNode.id > subroot.id) {
-      if (subroot.right == null) subroot.right = newNode; // eslint-disable-line no-param-reassign
-      else this.addNodeRecursively(subroot.right, newNode);
+      if (subroot.right === null) {
+        subroot.right = newNode; // eslint-disable-line no-param-reassign
+      } else {
+        // $FlowFixMe
+        this.addNodeRecursively(subroot.right, newNode);
+      }
     }
   }
 
   /**
    * Doing level order traversal from BST's root to their leaf
-   * 
+   *
    * @returns any[]
    */
   levelOrderTraversal(): any[] {
